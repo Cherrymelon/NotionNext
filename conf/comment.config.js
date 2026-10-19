@@ -29,7 +29,8 @@ module.exports = {
 
   // utterance
   COMMENT_UTTERRANCES_REPO:
-    process.env.NEXT_PUBLIC_COMMENT_UTTERRANCES_REPO || '', // 你的代码仓库名， 例如 'username/repository'； 更多文档参考 https://utteranc.es/
+    process.env.NEXT_PUBLIC_COMMENT_UTTERRANCES_REPO ||
+    'Cherrymelon/Blog-comments', // 你的代码仓库名， 例如 'username/repository'； 更多文档参考 https://utteranc.es/
 
   // giscus @see https://giscus.app/
   COMMENT_GISCUS_REPO: process.env.NEXT_PUBLIC_COMMENT_GISCUS_REPO || '', // 你的Github仓库名 e.g 'username/repository'
