@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/lib/config'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 // 过滤 <a> 标签不能识别的 props
 const filterDOMProps = props => {
@@ -33,6 +35,13 @@ const filterLinkProps = props => {
 
 const SmartLink = ({ href, children, ...rest }) => {
   const LINK = siteConfig('LINK')
+  const { asPath } = useRouter()
+  // Static HTML cannot contain request-specific query parameters. Keep the
+  // first client render identical, then preserve the current query for clicks.
+  const [queryString, setQueryString] = useState('')
+  useEffect(() => {
+    setQueryString(window.location.search?.slice(1) || '')
+  }, [asPath])
 
   // 获取 URL 字符串用于判断是否是外链
   let urlString = ''
@@ -50,8 +59,6 @@ const SmartLink = ({ href, children, ...rest }) => {
   const isExternal = urlString.startsWith('http') && !urlString.startsWith(LINK)
 
   const getPersistedQuery = () => {
-    if (typeof window === 'undefined') return {}
-    const queryString = window.location.search?.slice(1) || ''
     const params = new URLSearchParams(queryString)
     const preserved = {}
     for (const [key, value] of params.entries()) {

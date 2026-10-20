@@ -11,6 +11,30 @@
 
 /** @type {Record<string, { name?: string, summary?: string, cover?: string, coverWebp?: string, rootId?: string, tier?: 'free' | 'paid', settings?: Array<{ key: string, label: string, type: 'boolean' | 'text' | 'number' | 'select', defaultValue: string | number | boolean, options?: Array<{ label: string, value: string | number | boolean }> }>, palette?: Array<{ key: string, cssVar: string, label: string, defaultValue: string }> }>} */
 export const THEME_SWITCH_MANIFEST = {
+  stack: {
+    name: 'Stack',
+    summary: 'Jimmy Cai 的 Stack 主题，三栏侧栏、阅读卡片与深浅色模式。',
+    rootId: 'theme-stack',
+    settings: [
+      { key: 'STACK_RIGHT_SIDEBAR', label: '右侧栏', type: 'boolean', defaultValue: true },
+      { key: 'STACK_POST_LIST_COVER', label: '列表封面', type: 'boolean', defaultValue: true },
+      { key: 'STACK_ARTICLE_TOC', label: '文章目录', type: 'boolean', defaultValue: true }
+    ],
+    palette: [
+      { key: 'STACK_COLOR_PRIMARY', cssVar: '--stack-primary-light', label: '主色', defaultValue: '#34495e' },
+      { key: 'STACK_COLOR_PRIMARY_DARK', cssVar: '--stack-primary-dark', label: '深色模式：主色', defaultValue: '#ecf0f1' },
+      { key: 'STACK_COLOR_BG', cssVar: '--stack-bg-light', label: '页面背景', defaultValue: '#f5f5fa' },
+      { key: 'STACK_COLOR_BG_DARK', cssVar: '--stack-bg-dark', label: '深色模式：页面背景', defaultValue: '#303030' },
+      { key: 'STACK_COLOR_CARD', cssVar: '--stack-card-light', label: '卡片背景', defaultValue: '#ffffff' },
+      { key: 'STACK_COLOR_CARD_DARK', cssVar: '--stack-card-dark', label: '深色模式：卡片背景', defaultValue: '#424242' },
+      { key: 'STACK_COLOR_TEXT', cssVar: '--stack-text-light', label: '主文字', defaultValue: '#000000' },
+      { key: 'STACK_COLOR_TEXT_DARK', cssVar: '--stack-text-dark', label: '深色模式：主文字', defaultValue: 'rgba(255,255,255,0.9)' },
+      { key: 'STACK_COLOR_TEXT_SECONDARY', cssVar: '--stack-text-secondary-light', label: '次级文字', defaultValue: '#747474' },
+      { key: 'STACK_COLOR_TEXT_SECONDARY_DARK', cssVar: '--stack-text-secondary-dark', label: '深色模式：次级文字', defaultValue: 'rgba(255,255,255,0.7)' },
+      { key: 'STACK_COLOR_BORDER', cssVar: '--stack-border-light', label: '边框', defaultValue: 'rgba(218,218,218,0.5)' },
+      { key: 'STACK_COLOR_BORDER_DARK', cssVar: '--stack-border-dark', label: '深色模式：边框', defaultValue: 'rgba(255,255,255,0.12)' }
+    ]
+  },
   endspace: {
     name: 'Endspace',
     summary: '轻工业终末风，侧栏导航、悬浮控件与加载动画。',

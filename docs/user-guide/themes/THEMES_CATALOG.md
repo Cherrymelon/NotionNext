@@ -1,9 +1,11 @@
-# 内置主题全览（27 个）
+# 内置主题全览（28 个）
 
-> 与 `themes/` 目录及 `conf/themeSwitch.manifest.js` 同步 · 当前版本 **4.10.10**
+> 与 `themes/` 目录及 `conf/themeSwitch.manifest.js` 同步 · 当前版本 **4.11.0**
 > 先按站点目标选主题，再进入单个主题文档看配置。
 
 预览：`https://preview.tangly1024.com/?theme=<id>`（`id` 为下表主题 ID，小写）。
+
+本地新增的 Stack 尚未部署到上述预览站；启动当前项目后使用 `/?theme=stack`。
 
 切换方式：`NEXT_PUBLIC_THEME=<id>`、Notion Config 的 `THEME`，或开启 `THEME_SWITCH` 挂件。
 
@@ -12,6 +14,7 @@
 | 你想做什么 | 优先看 | 备选 | 选择理由 |
 | --- | --- | --- | --- |
 | 个人博客 / 日常写作 | [simple](./simple.md)、[hexo](./hexo.md) | [xuhome](./xuhome.md)、[nobelium](./nobelium.md)、[typography](./typography.md) | 结构清楚、文章优先；XuHome 适合希望强化视觉辨识度的站长 |
+| 三栏图文阅读 | [stack](./stack.md) | [fuwari](./fuwari.md) | Stack 提供侧栏、卡片、分类标签挂件与深浅色模式 |
 | 文档 / 知识库 / 教程站 | [gitbook](./gitbook.md)、[claude](./claude.md) | [thoughtlite](./thoughtlite.md) | 侧边栏、目录和阅读连续性更强 |
 | 作品集 / 个人品牌 | [opc](./opc.md)、[proxio](./proxio.md) | [starter](./starter.md)、[landing](./landing.md) | 首屏表达强，适合展示身份、作品、服务和 AI 任务流水线 |
 | 产品官网 / SaaS 落地页 | [starter](./starter.md)、[landing](./landing.md) | [commerce](./commerce.md) | 有产品介绍、功能区块、价格和 CTA 结构 |
@@ -62,6 +65,7 @@
 | ID | 名称 | 定位 | 说明文档 |
 | --- | --- | --- | --- |
 | `simple` | Simple | 默认极简文字博客 | [simple.md](./simple.md) |
+| `stack` | Stack | 三栏侧栏与阅读卡片 | [stack.md](./stack.md) |
 | `hexo` | Hexo | 经典双栏博客 | [hexo.md](./hexo.md) |
 | `heo` | Heo | 模块化首页、通知条、英雄区 | [heo.md](./heo.md) |
 | `gitbook` | GitBook | 文档/手册侧栏目录 | [gitbook.md](./gitbook.md) |

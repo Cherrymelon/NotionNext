@@ -11,6 +11,7 @@ jest.mock('@/blog.config', () => ({ NOTION_HOST: 'https://www.notion.so' }))
 jest.mock('@/lib/utils', () => ({ isBrowser: true, loadExternalResource: jest.fn() }))
 jest.mock('@/components/NotionEmbed', () => () => null)
 jest.mock('@/components/NotionLink', () => () => null)
+jest.mock('@/components/NotionCollection', () => () => null)
 jest.mock('@/components/OriginalityProof', () => () => null)
 jest.mock('react-notion-x', () => ({
   NotionRenderer: ({ recordMap }) => <>

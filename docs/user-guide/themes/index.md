@@ -1,4 +1,4 @@
-﻿# 内置主题说明文档（26 个）
+﻿# 内置主题说明文档（28 个）
 
 每个主题一篇独立说明：**主题特性**、**启用方式**与 **`themes/<id>/config.js` 配置表** 与代码同步。维护者可运行：
 
@@ -10,7 +10,7 @@ node scripts/generate-theme-user-docs.mjs
 
 <!-- theme-index-table -->
 
-## 全部主题（27 个）
+## 全部主题（28 个）
 
 | ID | 名称 | 特性摘要 | 说明 |
 | --- | --- | --- | --- |
@@ -37,6 +37,7 @@ node scripts/generate-theme-user-docs.mjs
 | `plog` | Plog | 偏图片与轻量图文化展示。 | [plog.md](./plog.md) |
 | `proxio` | Proxio | 作品集与个人品牌展示增强。 | [proxio.md](./proxio.md) |
 | `simple` | Simple | 极简清爽，适合文字为主的博客。 | [simple.md](./simple.md) |
+| `stack` | Stack | Jimmy Cai 的 Stack 主题，三栏侧栏、阅读卡片与深浅色模式。 | [stack.md](./stack.md) · [实现文档](../../developer/themes/STACK.md) |
 | `starter` | Starter | 落地页与区块化营销向模板。 | [starter.md](./starter.md) |
 | `thoughtlite` | ThoughtLite | 轻阅读向时间线与 Latest 卡片，单列列表与文章卡片排版。 | [thoughtlite.md](./thoughtlite.md) · [实现文档](../../developer/themes/THOUGHTLITE.md) |
 | `typography` | Typography | 排版优先，强调正文阅读与层级。 | [typography.md](./typography.md) |

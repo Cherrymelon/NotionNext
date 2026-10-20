@@ -1,7 +1,7 @@
 import BLOG, { LAYOUT_MAPPINGS } from '@/blog.config'
 import getConfig from 'next/config'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+import { lazy, Suspense } from 'react'
 import { getQueryParam, getQueryVariable, isBrowser } from '../lib/utils'
 
 // 在next.config.js中扫描所有主题
@@ -16,6 +16,20 @@ const LayoutLoading = () => (
 
 const EmptyBaseLayout = ({ children }) => <>{children}</>
 const EmptyPageLayout = () => null
+
+// Layouts are selected at runtime, outside next/dynamic's static module analysis.
+// Suspense lets SSR await them and preserves the server HTML while the matching
+// client chunk loads, instead of replacing it with a mismatched loading tree.
+const createLazyLayout = (loader, Loading) => {
+  const Layout = lazy(async () => ({ default: await loader() }))
+  return function ThemeLayout(props) {
+    return (
+      <Suspense fallback={<Loading />}>
+        <Layout {...props} />
+      </Suspense>
+    )
+  }
+}
 
 const IndexLayoutLoading = () => (
   <div className='pt-10 md:pt-18 w-full bg-[#f6f6f1] dark:bg-black'>
@@ -194,10 +208,10 @@ export const getBaseLayoutByTheme = theme => {
   if (baseLayoutCache.has(normalizedTheme)) {
     return baseLayoutCache.get(normalizedTheme)
   }
-  const DynamicBaseLayout = dynamic(
+  const DynamicBaseLayout = createLazyLayout(
     () =>
       resolveThemeLayout(normalizedTheme, 'LayoutBase', EmptyBaseLayout),
-    { ssr: true }
+    LayoutLoading
   )
   baseLayoutCache.set(normalizedTheme, DynamicBaseLayout)
   return DynamicBaseLayout
@@ -231,10 +245,10 @@ export const useLayoutByTheme = ({ layoutName, theme }) => {
 
   const loadLayout = () =>
     resolveThemeLayout(themeQuery, layoutName, EmptyPageLayout)
-  const DynamicLayoutComponent = dynamic(loadLayout, {
-    ssr: true,
-    loading: getLayoutLoading(layoutName)
-  })
+  const DynamicLayoutComponent = createLazyLayout(
+    loadLayout,
+    getLayoutLoading(layoutName)
+  )
   layoutByThemeCache.set(cacheKey, DynamicLayoutComponent)
   scheduleFixThemeDOM(themeQuery === BLOG.THEME ? 80 : 240)
   return DynamicLayoutComponent
